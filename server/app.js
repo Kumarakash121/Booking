@@ -3,7 +3,9 @@ const bodyparser = require('body-parser')
 const cors = require('cors');
 const app=express();
 const bcrypt = require('bcrypt');
-
+const User=require('./models/user');
+const rooms=require('./models/room');
+const Bookings=require('./models/Booking');
 require("dotenv").config();
 // const path=require('path');
 // import moment from "moment";
@@ -46,115 +48,115 @@ connection.on('connected',function(){
 // })
 
 
-const UserSchema=mongoose.Schema({
+// const UserSchema=mongoose.Schema({
 
 
-  name:{
-    type:"String",
-    required:true
-  },
-  email:{
-      type:"String",
-      required:true
-  }
-  ,password:{
-      type:"String",
-      required:true
-  },
-  cpassword:{
-    type:"String",
-    required:true
-  }
-  ,
-  isAdmin:{
-      type:"String",
-      default:false
-  },
+//   name:{
+//     type:"String",
+//     required:true
+//   },
+//   email:{
+//       type:"String",
+//       required:true
+//   }
+//   ,password:{
+//       type:"String",
+//       required:true
+//   },
+//   cpassword:{
+//     type:"String",
+//     required:true
+//   }
+//   ,
+//   isAdmin:{
+//       type:"String",
+//       default:false
+//   },
   
-},{
-  timeStamps:true,
-})
+// },{
+//   timeStamps:true,
+// })
 
-const User=mongoose.model("User",UserSchema);
+// const User=mongoose.model("User",UserSchema);
 
-const roomSchema=mongoose.Schema({
+// const roomSchema=mongoose.Schema({
     
-    name:{
-       type:String,
-       required:true
-    }
-    ,
-    maxCount:{
-       type:Number,
-       required:true
-    }
-   ,phoneNumber:{
-       type:Number,
-       required:true
-   }
-   ,rentPerDay:{
-       type:Number,
-       required:true
-   }
-   ,imageUrls:[]
-   ,currentBookings:[]
-   ,Type:{
-       type:String,
-       required:true
-   }
-   ,Description:{
-       type:String,
-       required:true
-   }
-})
+//     name:{
+//        type:String,
+//        required:true
+//     }
+//     ,
+//     maxCount:{
+//        type:Number,
+//        required:true
+//     }
+//    ,phoneNumber:{
+//        type:Number,
+//        required:true
+//    }
+//    ,rentPerDay:{
+//        type:Number,
+//        required:true
+//    }
+//    ,imageUrls:[]
+//    ,currentBookings:[]
+//    ,Type:{
+//        type:String,
+//        required:true
+//    }
+//    ,Description:{
+//        type:String,
+//        required:true
+//    }
+// })
 
-const rooms=mongoose.model('rooms',roomSchema);
+// const rooms=mongoose.model('rooms',roomSchema);
 
-   const bookingSchema=mongoose.Schema({
+  //  const bookingSchema=mongoose.Schema({
 
-     room:{
-      type:String,
-      required:true
-     }
-     ,
-     roomid:{
-      type:String,
-      required:true
-     },
-     userid:{
-      type:String,
-      required:true
-     },
-     fromdate:{
-      type:String,
-      required:true
-     },
-     todate:{
-      type:String,
-      required:true
-     },
-     totalamount:{
-      type:Number,
-      required:true
-     },
-     totaldays:{
-      type:Number,
-      required:true
-     },
-     transactionid:{
-      type:String,
-      required:true
-     },
-     status:{
-      type:String,
-      required:true,
-      default:'booked'
-     }
-   },{
-     timeStamps:true,
-   })
+  //    room:{
+  //     type:String,
+  //     required:true
+  //    }
+  //    ,
+  //    roomid:{
+  //     type:String,
+  //     required:true
+  //    },
+  //    userid:{
+  //     type:String,
+  //     required:true
+  //    },
+  //    fromdate:{
+  //     type:String,
+  //     required:true
+  //    },
+  //    todate:{
+  //     type:String,
+  //     required:true
+  //    },
+  //    totalamount:{
+  //     type:Number,
+  //     required:true
+  //    },
+  //    totaldays:{
+  //     type:Number,
+  //     required:true
+  //    },
+  //    transactionid:{
+  //     type:String,
+  //     required:true
+  //    },
+  //    status:{
+  //     type:String,
+  //     required:true,
+  //     default:'booked'
+  //    }
+  //  },{
+  //    timeStamps:true,
+  //  })
 
-   const Bookings=mongoose.model('bookings',bookingSchema);
+  //  const Bookings=mongoose.model('bookings',bookingSchema);
 
 
 
